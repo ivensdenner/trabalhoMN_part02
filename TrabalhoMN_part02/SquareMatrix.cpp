@@ -1,7 +1,7 @@
-#include "QuadraticMatrix.h"
+#include "SquareMatrix.h"
 
 
-QuadraticMatrix::QuadraticMatrix(int _dimension) : dimension(_dimension)
+SquareMatrix::SquareMatrix(int _dimension) : dimension(_dimension)
 {
 	matrix = new double*[dimension];
 	for (int i = 0; i < dimension; i++)
@@ -19,7 +19,7 @@ QuadraticMatrix::QuadraticMatrix(int _dimension) : dimension(_dimension)
 }
 
 
-QuadraticMatrix::QuadraticMatrix(const QuadraticMatrix& _q_matrix) : dimension(_q_matrix.get_dimension())
+SquareMatrix::SquareMatrix(const SquareMatrix& _q_matrix) : dimension(_q_matrix.get_dimension())
 {
 	matrix = new double*[dimension];
 	for (int i = 0; i < dimension; i++)
@@ -37,7 +37,7 @@ QuadraticMatrix::QuadraticMatrix(const QuadraticMatrix& _q_matrix) : dimension(_
 }
 
 
-QuadraticMatrix::~QuadraticMatrix()
+SquareMatrix::~SquareMatrix()
 {
 	for (int i = 0; i < dimension; ++i)
 	{
@@ -47,28 +47,28 @@ QuadraticMatrix::~QuadraticMatrix()
 }
 
 
-int QuadraticMatrix::get_dimension() const
+int SquareMatrix::get_dimension() const
 {
 	return dimension;
 }
 
 
-double QuadraticMatrix::get_value(int i, int j) const
+double SquareMatrix::get_value(int i, int j) const
 {
 	return matrix[i][j];
 }
 
 
-void QuadraticMatrix::set_value(double value, int i, int j)
+void SquareMatrix::set_value(double value, int i, int j)
 {
 	matrix[i][j] = value;
 }
 
 
 // Operators overload
-QuadraticMatrix& QuadraticMatrix::operator + (const QuadraticMatrix& _q_matrix)
+SquareMatrix& SquareMatrix::operator + (const SquareMatrix& _q_matrix)
 {
-	QuadraticMatrix *q_matrix = new QuadraticMatrix(*this);
+	SquareMatrix *q_matrix = new SquareMatrix(*this);
 
 	if (_q_matrix.get_dimension() == dimension)
 	{
@@ -79,7 +79,7 @@ QuadraticMatrix& QuadraticMatrix::operator + (const QuadraticMatrix& _q_matrix)
 }
 
 
-QuadraticMatrix& QuadraticMatrix::operator += (const QuadraticMatrix& _q_matrix)
+SquareMatrix& SquareMatrix::operator += (const SquareMatrix& _q_matrix)
 {
 	if (dimension == _q_matrix.get_dimension())
 	{
@@ -96,9 +96,9 @@ QuadraticMatrix& QuadraticMatrix::operator += (const QuadraticMatrix& _q_matrix)
 }
 
 
-QuadraticMatrix& QuadraticMatrix::operator + (double scalar)
+SquareMatrix& SquareMatrix::operator + (double scalar)
 {
-	QuadraticMatrix *q_matrix = new QuadraticMatrix(*this);
+	SquareMatrix *q_matrix = new SquareMatrix(*this);
 
 	*q_matrix += scalar;
 
@@ -106,7 +106,7 @@ QuadraticMatrix& QuadraticMatrix::operator + (double scalar)
 }
 
 
-QuadraticMatrix& QuadraticMatrix::operator += (double scalar)
+SquareMatrix& SquareMatrix::operator += (double scalar)
 {
 	for (int i = 0; i < dimension; i++)
 	{
@@ -120,9 +120,9 @@ QuadraticMatrix& QuadraticMatrix::operator += (double scalar)
 }
 
 
-QuadraticMatrix& QuadraticMatrix::operator - (const QuadraticMatrix& _q_matrix)
+SquareMatrix& SquareMatrix::operator - (const SquareMatrix& _q_matrix)
 {
-	QuadraticMatrix *q_matrix = new QuadraticMatrix(*this);
+	SquareMatrix *q_matrix = new SquareMatrix(*this);
 
 	if (_q_matrix.get_dimension() == dimension)
 	{
@@ -133,7 +133,7 @@ QuadraticMatrix& QuadraticMatrix::operator - (const QuadraticMatrix& _q_matrix)
 }
 
 
-QuadraticMatrix& QuadraticMatrix::operator -= (const QuadraticMatrix& _q_matrix)
+SquareMatrix& SquareMatrix::operator -= (const SquareMatrix& _q_matrix)
 {
 	if (dimension == _q_matrix.get_dimension())
 	{
@@ -150,9 +150,9 @@ QuadraticMatrix& QuadraticMatrix::operator -= (const QuadraticMatrix& _q_matrix)
 }
 
 
-QuadraticMatrix& QuadraticMatrix::operator - (double scalar)
+SquareMatrix& SquareMatrix::operator - (double scalar)
 {
-	QuadraticMatrix *q_matrix = new QuadraticMatrix(*this);
+	SquareMatrix *q_matrix = new SquareMatrix(*this);
 
 	*q_matrix -= scalar;
 
@@ -160,7 +160,7 @@ QuadraticMatrix& QuadraticMatrix::operator - (double scalar)
 }
 
 
-QuadraticMatrix& QuadraticMatrix::operator -= (double scalar)
+SquareMatrix& SquareMatrix::operator -= (double scalar)
 {
 	for (int i = 0; i < dimension; i++)
 	{
@@ -174,9 +174,9 @@ QuadraticMatrix& QuadraticMatrix::operator -= (double scalar)
 }
 
 
-QuadraticMatrix& QuadraticMatrix::operator * (const QuadraticMatrix& _q_matrix)
+SquareMatrix& SquareMatrix::operator * (const SquareMatrix& _q_matrix)
 {
-	QuadraticMatrix *q_matrix = new QuadraticMatrix(*this);
+	SquareMatrix *q_matrix = new SquareMatrix(*this);
 
 	*q_matrix *= _q_matrix;
 
@@ -184,7 +184,7 @@ QuadraticMatrix& QuadraticMatrix::operator * (const QuadraticMatrix& _q_matrix)
 }
 
 
-QuadraticMatrix& QuadraticMatrix::operator *= (const QuadraticMatrix& _q_matrix)
+SquareMatrix& SquareMatrix::operator *= (const SquareMatrix& _q_matrix)
 {
 	if (dimension == _q_matrix.get_dimension())
 	{
@@ -228,9 +228,9 @@ QuadraticMatrix& QuadraticMatrix::operator *= (const QuadraticMatrix& _q_matrix)
 }
 
 
-QuadraticMatrix& QuadraticMatrix::operator * (double scalar)
+SquareMatrix& SquareMatrix::operator * (double scalar)
 {
-	QuadraticMatrix *q_matrix = new QuadraticMatrix(*this);
+	SquareMatrix *q_matrix = new SquareMatrix(*this);
 
 	*q_matrix *= scalar;
 
@@ -238,7 +238,7 @@ QuadraticMatrix& QuadraticMatrix::operator * (double scalar)
 }
 
 
-QuadraticMatrix& QuadraticMatrix::operator *= (double scalar)
+SquareMatrix& SquareMatrix::operator *= (double scalar)
 {
 	for (int i = 0; i < dimension; i++)
 	{
@@ -252,9 +252,9 @@ QuadraticMatrix& QuadraticMatrix::operator *= (double scalar)
 }
 
 
-QuadraticMatrix& QuadraticMatrix::operator / (double scalar)
+SquareMatrix& SquareMatrix::operator / (double scalar)
 {
-	QuadraticMatrix *q_matrix = new QuadraticMatrix(*this);
+	SquareMatrix *q_matrix = new SquareMatrix(*this);
 
 	*q_matrix /= scalar;
 
@@ -262,7 +262,7 @@ QuadraticMatrix& QuadraticMatrix::operator / (double scalar)
 }
 
 
-QuadraticMatrix& QuadraticMatrix::operator /= (double scalar)
+SquareMatrix& SquareMatrix::operator /= (double scalar)
 {
 	for (int i = 0; i < dimension; i++)
 	{
