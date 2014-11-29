@@ -41,6 +41,10 @@ double VectorN::get_value(int i) const
 	{
 		return vector[i];
 	}
+	else
+	{
+		return 0;
+	}
 }
 
 
