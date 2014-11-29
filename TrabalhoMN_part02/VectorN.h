@@ -15,6 +15,25 @@ public:
 	void set_value(double value, int i);
 
 
+	// Operators overload
+	VectorN& operator + (const VectorN& _vector);
+	VectorN& operator += (const VectorN& _vector);
+	VectorN& operator + (double scalar);
+	VectorN& operator += (double scalar);
+
+	VectorN& operator - (const VectorN& _vector);
+	VectorN& operator -= (const VectorN& _vector);
+	VectorN& operator - (double scalar);
+	VectorN& operator -= (double scalar);
+
+	double operator * (const VectorN& _vector);
+	double operator *= (const VectorN& _vector);
+	VectorN& operator * (double scalar);
+	VectorN& operator *= (double scalar);
+
+	VectorN& operator / (double scalar);
+	VectorN& operator /= (double scalar);
+
 private:
 	const int dimension;
 	double* vector;
