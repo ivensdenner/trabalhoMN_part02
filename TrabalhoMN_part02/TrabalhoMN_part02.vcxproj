@@ -65,9 +65,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="SquareMatrix.h" />
+    <ClInclude Include="VectorN.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SquareMatrix.cpp" />
+    <ClCompile Include="VectorN.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

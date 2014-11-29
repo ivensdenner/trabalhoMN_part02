@@ -6,7 +6,7 @@ class SquareMatrix
 {
 public:
 	SquareMatrix(int _dimension);
-	SquareMatrix(const SquareMatrix& _q_matrix);
+	SquareMatrix(const SquareMatrix& _s_matrix);
 	virtual ~SquareMatrix();
 
 
@@ -17,16 +17,16 @@ public:
 
 
 	// Operators overload
-	SquareMatrix& operator + (const SquareMatrix& _q_matrix);
-	SquareMatrix& operator += (const SquareMatrix& _q_matrix);
+	SquareMatrix& operator + (const SquareMatrix& _s_matrix);
+	SquareMatrix& operator += (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator + (double scalar);
 	SquareMatrix& operator += (double scalar);
-	SquareMatrix& operator - (const SquareMatrix& _q_matrix);
-	SquareMatrix& operator -= (const SquareMatrix& _q_matrix);
+	SquareMatrix& operator - (const SquareMatrix& _s_matrix);
+	SquareMatrix& operator -= (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator - (double scalar);
 	SquareMatrix& operator -= (double scalar);
-	SquareMatrix& operator * (const SquareMatrix& _q_matrix);
-	SquareMatrix& operator *= (const SquareMatrix& _q_matrix);
+	SquareMatrix& operator * (const SquareMatrix& _s_matrix);
+	SquareMatrix& operator *= (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator * (double scalar);
 	SquareMatrix& operator *= (double scalar);
 	SquareMatrix& operator / (double scalar);
