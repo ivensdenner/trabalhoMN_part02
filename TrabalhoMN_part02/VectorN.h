@@ -6,7 +6,7 @@ class VectorN
 {
 public:
 	VectorN(int _dimension);
-	VectorN(const VectorN& _vector);
+	VectorN(const VectorN& _vectorN);
 	virtual ~VectorN();
 
 	int get_dimension() const;
@@ -16,18 +16,17 @@ public:
 
 
 	// Operators overload
-	VectorN& operator + (const VectorN& _vector);
-	VectorN& operator += (const VectorN& _vector);
+	VectorN& operator + (const VectorN& _vectorN);
+	VectorN& operator += (const VectorN& _vectorN);
 	VectorN& operator + (double scalar);
 	VectorN& operator += (double scalar);
 
-	VectorN& operator - (const VectorN& _vector);
-	VectorN& operator -= (const VectorN& _vector);
+	VectorN& operator - (const VectorN& _vectorN);
+	VectorN& operator -= (const VectorN& _vectorN);
 	VectorN& operator - (double scalar);
 	VectorN& operator -= (double scalar);
 
-	double operator * (const VectorN& _vector);
-	double operator *= (const VectorN& _vector);
+	double operator * (const VectorN& _vectorN);
 	VectorN& operator * (double scalar);
 	VectorN& operator *= (double scalar);
 

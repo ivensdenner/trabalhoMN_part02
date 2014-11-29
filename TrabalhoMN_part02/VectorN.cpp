@@ -12,13 +12,13 @@ VectorN::VectorN(int _dimension) : dimension(_dimension)
 }
 
 
-VectorN::VectorN(const VectorN& _vector) : dimension(_vector.get_dimension())
+VectorN::VectorN(const VectorN& _vectorN) : dimension(_vectorN.get_dimension())
 {
 	vector = new double[dimension];
 
 	for (int i = 0; i < dimension; i++)
 	{
-		vector[i] = _vector.get_value(i);
+		vector[i] = _vectorN.get_value(i);
 	}
 }
 
@@ -50,4 +50,158 @@ void VectorN::set_value(double value, int i)
 	{
 		vector[i] = value;
 	}
+}
+
+
+VectorN& VectorN::operator + (const VectorN& _vectorN)
+{
+	VectorN *vectorN = new VectorN(*this);
+
+	if (dimension == _vectorN.get_dimension())
+	{
+		*vectorN += _vectorN;
+	}
+
+	return *vectorN;
+}
+
+
+VectorN& VectorN::operator += (const VectorN& _vectorN)
+{
+	if (dimension == _vectorN.get_dimension())
+	{
+		for (int i = 0; i < dimension; i++)
+		{
+			vector[i] += _vectorN.get_value(i);
+		}
+	}
+
+	return *this;
+}
+
+
+VectorN& VectorN::operator + (double scalar)
+{
+	VectorN *vectorN = new VectorN(*this);
+
+	*vectorN += scalar;
+
+	return *vectorN;
+}
+
+
+VectorN& VectorN::operator += (double scalar)
+{
+	for (int i = 0; i < dimension; i++)
+	{
+		vector[i] += scalar;
+	}
+
+	return *this;
+}
+
+
+VectorN& VectorN::operator - (const VectorN& _vectorN)
+{
+	VectorN *vectorN = new VectorN(*this);
+
+	if (dimension == _vectorN.get_dimension())
+	{
+		*vectorN -= _vectorN;
+	}
+
+	return *vectorN;
+}
+
+
+VectorN& VectorN::operator -= (const VectorN& _vectorN)
+{
+	if (dimension == _vectorN.get_dimension())
+	{
+		for (int i = 0; i < dimension; i++)
+		{
+			vector[i] -= _vectorN.get_value(i);
+		}
+	}
+
+	return *this;
+}
+
+
+VectorN& VectorN::operator - (double scalar)
+{
+	VectorN *vectorN = new VectorN(*this);
+
+	*vectorN -= scalar;
+
+	return *vectorN;
+}
+
+
+VectorN& VectorN::operator -= (double scalar)
+{
+	for (int i = 0; i < dimension; i++)
+	{
+		vector[i] -= scalar;
+	}
+
+	return *this;
+}
+
+
+double VectorN::operator * (const VectorN& _vectorN)
+{
+	double result = 0;
+
+	if (dimension == _vectorN.get_dimension())
+	{
+		for (int i = 0; i < dimension; i++)
+		{
+			result += vector[i] * _vectorN.get_value(i);
+		}
+	}
+
+	return result;
+}
+
+
+VectorN& VectorN::operator * (double scalar)
+{
+	VectorN *vectorN = new VectorN(*this);
+
+	*vectorN *= scalar;
+
+	return *vectorN;
+}
+
+
+VectorN& VectorN::operator *= (double scalar)
+{
+	for (int i = 0; i < dimension; i++)
+	{
+		vector[i] *= scalar;
+	}
+
+	return *this;
+}
+
+
+VectorN& VectorN::operator / (double scalar)
+{
+	VectorN *vectorN = new VectorN(*this);
+
+	*vectorN /= scalar;
+
+	return *vectorN;
+}
+
+
+VectorN& VectorN::operator /= (double scalar)
+{
+	for (int i = 0; i < dimension; i++)
+	{
+		vector[i] /= scalar;
+	}
+
+	return *this;
 }
