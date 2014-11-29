@@ -21,14 +21,17 @@ public:
 	SquareMatrix& operator += (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator + (double scalar);
 	SquareMatrix& operator += (double scalar);
+
 	SquareMatrix& operator - (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator -= (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator - (double scalar);
 	SquareMatrix& operator -= (double scalar);
+
 	SquareMatrix& operator * (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator *= (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator * (double scalar);
 	SquareMatrix& operator *= (double scalar);
+	
 	SquareMatrix& operator / (double scalar);
 	SquareMatrix& operator /= (double scalar);
 
