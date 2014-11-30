@@ -1,7 +1,12 @@
+//
+//  SquareMatrix.h
+//  TrabalhoMN_part02
+//
+//  Created by Ivens Denner on 30/11/14.
+//  Copyright (c) 2014 Ivens Denner. All rights reserved.
+//
 #ifndef SQUARE_MATRIX_H
 #define SQUARE_MATRIX_H
-
-#include "VectorN.h"
 
 
 class SquareMatrix
@@ -10,38 +15,35 @@ public:
 	SquareMatrix(int _dimension);
 	SquareMatrix(const SquareMatrix& _s_matrix);
 	virtual ~SquareMatrix();
-
-
+    
+    
 	int get_dimension() const;
-
+    
 	double get_value(int i, int j) const;
 	void set_value(double value, int i, int j);
-
-
+    
+    
 	// Operators overload
-	SquareMatrix& operator = (const SquareMatrix& _s_matrix);
-
 	SquareMatrix& operator + (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator += (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator + (double scalar);
 	SquareMatrix& operator += (double scalar);
-
+    
 	SquareMatrix& operator - (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator -= (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator - (double scalar);
 	SquareMatrix& operator -= (double scalar);
-
+    
 	SquareMatrix& operator * (const SquareMatrix& _s_matrix);
-	VectorN& operator * (const VectorN& _vectorN);
 	SquareMatrix& operator *= (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator * (double scalar);
 	SquareMatrix& operator *= (double scalar);
 	
 	SquareMatrix& operator / (double scalar);
 	SquareMatrix& operator /= (double scalar);
-
+    
 private:
-	int dimension;
+	const int dimension;
 	double **matrix;
 };
 

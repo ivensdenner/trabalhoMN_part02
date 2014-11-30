@@ -1,10 +1,18 @@
+//
+//  VectorN.cpp
+//  TrabalhoMN_part02
+//
+//  Created by Ivens Denner on 30/11/14.
+//  Copyright (c) 2014 Ivens Denner. All rights reserved.
+//
+
 #include "VectorN.h"
 
 
 VectorN::VectorN(int _dimension) : dimension(_dimension)
 {
 	vector = new double[dimension];
-
+    
 	for (int i = 0; i < dimension; i++)
 	{
 		vector[i] = 0;
@@ -15,7 +23,7 @@ VectorN::VectorN(int _dimension) : dimension(_dimension)
 VectorN::VectorN(const VectorN& _vectorN) : dimension(_vectorN.get_dimension())
 {
 	vector = new double[dimension];
-
+    
 	for (int i = 0; i < dimension; i++)
 	{
 		vector[i] = _vectorN.get_value(i);
@@ -60,12 +68,12 @@ void VectorN::set_value(double value, int i)
 VectorN& VectorN::operator + (const VectorN& _vectorN)
 {
 	VectorN *vectorN = new VectorN(*this);
-
+    
 	if (dimension == _vectorN.get_dimension())
 	{
 		*vectorN += _vectorN;
 	}
-
+    
 	return *vectorN;
 }
 
@@ -79,7 +87,7 @@ VectorN& VectorN::operator += (const VectorN& _vectorN)
 			vector[i] += _vectorN.get_value(i);
 		}
 	}
-
+    
 	return *this;
 }
 
@@ -87,9 +95,9 @@ VectorN& VectorN::operator += (const VectorN& _vectorN)
 VectorN& VectorN::operator + (double scalar)
 {
 	VectorN *vectorN = new VectorN(*this);
-
+    
 	*vectorN += scalar;
-
+    
 	return *vectorN;
 }
 
@@ -100,7 +108,7 @@ VectorN& VectorN::operator += (double scalar)
 	{
 		vector[i] += scalar;
 	}
-
+    
 	return *this;
 }
 
@@ -108,12 +116,12 @@ VectorN& VectorN::operator += (double scalar)
 VectorN& VectorN::operator - (const VectorN& _vectorN)
 {
 	VectorN *vectorN = new VectorN(*this);
-
+    
 	if (dimension == _vectorN.get_dimension())
 	{
 		*vectorN -= _vectorN;
 	}
-
+    
 	return *vectorN;
 }
 
@@ -127,7 +135,7 @@ VectorN& VectorN::operator -= (const VectorN& _vectorN)
 			vector[i] -= _vectorN.get_value(i);
 		}
 	}
-
+    
 	return *this;
 }
 
@@ -135,9 +143,9 @@ VectorN& VectorN::operator -= (const VectorN& _vectorN)
 VectorN& VectorN::operator - (double scalar)
 {
 	VectorN *vectorN = new VectorN(*this);
-
+    
 	*vectorN -= scalar;
-
+    
 	return *vectorN;
 }
 
@@ -148,7 +156,7 @@ VectorN& VectorN::operator -= (double scalar)
 	{
 		vector[i] -= scalar;
 	}
-
+    
 	return *this;
 }
 
@@ -156,7 +164,7 @@ VectorN& VectorN::operator -= (double scalar)
 double VectorN::operator * (const VectorN& _vectorN)
 {
 	double result = 0;
-
+    
 	if (dimension == _vectorN.get_dimension())
 	{
 		for (int i = 0; i < dimension; i++)
@@ -164,7 +172,7 @@ double VectorN::operator * (const VectorN& _vectorN)
 			result += vector[i] * _vectorN.get_value(i);
 		}
 	}
-
+    
 	return result;
 }
 
@@ -172,9 +180,9 @@ double VectorN::operator * (const VectorN& _vectorN)
 VectorN& VectorN::operator * (double scalar)
 {
 	VectorN *vectorN = new VectorN(*this);
-
+    
 	*vectorN *= scalar;
-
+    
 	return *vectorN;
 }
 
@@ -185,7 +193,7 @@ VectorN& VectorN::operator *= (double scalar)
 	{
 		vector[i] *= scalar;
 	}
-
+    
 	return *this;
 }
 
@@ -193,9 +201,9 @@ VectorN& VectorN::operator *= (double scalar)
 VectorN& VectorN::operator / (double scalar)
 {
 	VectorN *vectorN = new VectorN(*this);
-
+    
 	*vectorN /= scalar;
-
+    
 	return *vectorN;
 }
 
@@ -206,6 +214,6 @@ VectorN& VectorN::operator /= (double scalar)
 	{
 		vector[i] /= scalar;
 	}
-
+    
 	return *this;
 }

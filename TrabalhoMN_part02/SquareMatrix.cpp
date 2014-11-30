@@ -1,3 +1,11 @@
+//
+//  SquareMatrix.cpp
+//  TrabalhoMN_part02
+//
+//  Created by Ivens Denner on 30/11/14.
+//  Copyright (c) 2014 Ivens Denner. All rights reserved.
+//
+
 #include "SquareMatrix.h"
 
 
@@ -8,7 +16,7 @@ SquareMatrix::SquareMatrix(int _dimension) : dimension(_dimension)
 	{
 		matrix[i] = new double[dimension];
 	}
-
+    
 	for (int i = 0; i < dimension; i++)
 	{
 		for (int j = 0; j < dimension; j++)
@@ -26,7 +34,7 @@ SquareMatrix::SquareMatrix(const SquareMatrix& _s_matrix) : dimension(_s_matrix.
 	{
 		matrix[i] = new double[dimension];
 	}
-
+    
 	for (int i = 0; i < dimension; i++)
 	{
 		for (int j = 0; j < dimension; j++)
@@ -76,37 +84,15 @@ void SquareMatrix::set_value(double value, int i, int j)
 
 
 // Operators overload
-SquareMatrix& SquareMatrix::operator = (const SquareMatrix& _s_matrix)
-{
-	delete[] matrix;
-	dimension = _s_matrix.get_dimension();
-	matrix = new double*[dimension];
-	for (int i = 0; i < dimension; i++)
-	{
-		matrix[i] = new double[dimension];
-	}
-
-	for (int i = 0; i < dimension; i++)
-	{
-		for (int j = 0; j < dimension; j++)
-		{
-			matrix[i][j] = _s_matrix.get_value(i, j);
-		}
-	}
-
-	return *this;
-}
-
-
 SquareMatrix& SquareMatrix::operator + (const SquareMatrix& _s_matrix)
 {
 	SquareMatrix *s_matrix = new SquareMatrix(*this);
-
+    
 	if (_s_matrix.get_dimension() == dimension)
 	{
 		*s_matrix += _s_matrix;
 	}
-
+    
 	return *s_matrix;
 }
 
@@ -123,7 +109,7 @@ SquareMatrix& SquareMatrix::operator += (const SquareMatrix& _s_matrix)
 			}
 		}
 	}
-
+    
 	return *this;
 }
 
@@ -131,9 +117,9 @@ SquareMatrix& SquareMatrix::operator += (const SquareMatrix& _s_matrix)
 SquareMatrix& SquareMatrix::operator + (double scalar)
 {
 	SquareMatrix *s_matrix = new SquareMatrix(*this);
-
+    
 	*s_matrix += scalar;
-
+    
 	return *s_matrix;
 }
 
@@ -147,7 +133,7 @@ SquareMatrix& SquareMatrix::operator += (double scalar)
 			matrix[i][j] += scalar;
 		}
 	}
-
+    
 	return *this;
 }
 
@@ -155,12 +141,12 @@ SquareMatrix& SquareMatrix::operator += (double scalar)
 SquareMatrix& SquareMatrix::operator - (const SquareMatrix& _s_matrix)
 {
 	SquareMatrix *s_matrix = new SquareMatrix(*this);
-
+    
 	if (_s_matrix.get_dimension() == dimension)
 	{
 		*s_matrix -= _s_matrix;
 	}
-
+    
 	return *s_matrix;
 }
 
@@ -177,7 +163,7 @@ SquareMatrix& SquareMatrix::operator -= (const SquareMatrix& _s_matrix)
 			}
 		}
 	}
-
+    
 	return *this;
 }
 
@@ -185,9 +171,9 @@ SquareMatrix& SquareMatrix::operator -= (const SquareMatrix& _s_matrix)
 SquareMatrix& SquareMatrix::operator - (double scalar)
 {
 	SquareMatrix *s_matrix = new SquareMatrix(*this);
-
+    
 	*s_matrix -= scalar;
-
+    
 	return *s_matrix;
 }
 
@@ -201,7 +187,7 @@ SquareMatrix& SquareMatrix::operator -= (double scalar)
 			matrix[i][j] -= scalar;
 		}
 	}
-
+    
 	return *this;
 }
 
@@ -209,32 +195,10 @@ SquareMatrix& SquareMatrix::operator -= (double scalar)
 SquareMatrix& SquareMatrix::operator * (const SquareMatrix& _s_matrix)
 {
 	SquareMatrix *s_matrix = new SquareMatrix(*this);
-
+    
 	*s_matrix *= _s_matrix;
-
+    
 	return *s_matrix;
-}
-
-
-VectorN& SquareMatrix::operator * (const VectorN& _vectorN)
-{
-	VectorN *vectorN = new VectorN(dimension);
-	double sum;
-
-	if (dimension == _vectorN.get_dimension())
-	{
-		for (int i = 0; i < dimension; i++)
-		{
-			sum = 0;
-			for (int j = 0; j < dimension; j++)
-			{
-				sum += matrix[i][j] * _vectorN.get_value(j);
-			}
-			vectorN->set_value(sum, i);
-		}
-	}
-
-	return *vectorN;
 }
 
 
@@ -255,7 +219,7 @@ SquareMatrix& SquareMatrix::operator *= (const SquareMatrix& _s_matrix)
 				new_matrix[i][j] = 0;
 			}
 		}
-
+        
 		// Multiplicando as matrizes
 		for (int i = 0; i < dimension; i++)
 		{
@@ -267,7 +231,7 @@ SquareMatrix& SquareMatrix::operator *= (const SquareMatrix& _s_matrix)
 				}
 			}
 		}
-
+        
 		// Atribuindo nova matriz e desalocando anterior
 		double **temp = matrix;
 		matrix = new_matrix;
@@ -277,7 +241,7 @@ SquareMatrix& SquareMatrix::operator *= (const SquareMatrix& _s_matrix)
 		}
 		delete[] temp;
 	}
-
+    
 	return *this;
 }
 
@@ -285,9 +249,9 @@ SquareMatrix& SquareMatrix::operator *= (const SquareMatrix& _s_matrix)
 SquareMatrix& SquareMatrix::operator * (double scalar)
 {
 	SquareMatrix *s_matrix = new SquareMatrix(*this);
-
+    
 	*s_matrix *= scalar;
-
+    
 	return *s_matrix;
 }
 
@@ -301,7 +265,7 @@ SquareMatrix& SquareMatrix::operator *= (double scalar)
 			matrix[i][j] *= scalar;
 		}
 	}
-
+    
 	return *this;
 }
 
@@ -309,9 +273,9 @@ SquareMatrix& SquareMatrix::operator *= (double scalar)
 SquareMatrix& SquareMatrix::operator / (double scalar)
 {
 	SquareMatrix *s_matrix = new SquareMatrix(*this);
-
+    
 	*s_matrix /= scalar;
-
+    
 	return *s_matrix;
 }
 
@@ -325,6 +289,6 @@ SquareMatrix& SquareMatrix::operator /= (double scalar)
 			matrix[i][j] /= scalar;
 		}
 	}
-
+    
 	return *this;
 }
