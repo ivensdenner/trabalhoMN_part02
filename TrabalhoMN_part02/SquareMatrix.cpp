@@ -194,6 +194,28 @@ SquareMatrix& SquareMatrix::operator * (const SquareMatrix& _s_matrix)
 }
 
 
+VectorN& SquareMatrix::operator * (const VectorN& _vectorN)
+{
+	VectorN *vectorN = new VectorN(dimension);
+	double sum;
+
+	if (dimension == _vectorN.get_dimension())
+	{
+		for (int i = 0; i < dimension; i++)
+		{
+			sum = 0;
+			for (int j = 0; j < dimension; j++)
+			{
+				sum += matrix[i][j] * _vectorN.get_value(j);
+			}
+			vectorN->set_value(sum, i);
+		}
+	}
+
+	return *vectorN;
+}
+
+
 SquareMatrix& SquareMatrix::operator *= (const SquareMatrix& _s_matrix)
 {
 	if (dimension == _s_matrix.get_dimension())

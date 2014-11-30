@@ -1,6 +1,8 @@
 #ifndef SQUARE_MATRIX_H
 #define SQUARE_MATRIX_H
 
+#include "VectorN.h"
+
 
 class SquareMatrix
 {
@@ -28,6 +30,7 @@ public:
 	SquareMatrix& operator -= (double scalar);
 
 	SquareMatrix& operator * (const SquareMatrix& _s_matrix);
+	VectorN& operator * (const VectorN& _vectorN);
 	SquareMatrix& operator *= (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator * (double scalar);
 	SquareMatrix& operator *= (double scalar);

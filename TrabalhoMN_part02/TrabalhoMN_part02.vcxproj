@@ -64,10 +64,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DirectMethods.h" />
     <ClInclude Include="SquareMatrix.h" />
     <ClInclude Include="VectorN.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DirectMethods.cpp" />
+    <ClCompile Include="mainTest.cpp" />
     <ClCompile Include="SquareMatrix.cpp" />
     <ClCompile Include="VectorN.cpp" />
   </ItemGroup>
