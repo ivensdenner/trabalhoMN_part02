@@ -19,6 +19,8 @@ public:
 
 
 	// Operators overload
+	SquareMatrix& operator = (const SquareMatrix& _s_matrix);
+
 	SquareMatrix& operator + (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator += (const SquareMatrix& _s_matrix);
 	SquareMatrix& operator + (double scalar);
@@ -39,7 +41,7 @@ public:
 	SquareMatrix& operator /= (double scalar);
 
 private:
-	const int dimension;
+	int dimension;
 	double **matrix;
 };
 

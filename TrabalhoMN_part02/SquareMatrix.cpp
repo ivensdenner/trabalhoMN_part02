@@ -76,6 +76,28 @@ void SquareMatrix::set_value(double value, int i, int j)
 
 
 // Operators overload
+SquareMatrix& SquareMatrix::operator = (const SquareMatrix& _s_matrix)
+{
+	delete[] matrix;
+	dimension = _s_matrix.get_dimension();
+	matrix = new double*[dimension];
+	for (int i = 0; i < dimension; i++)
+	{
+		matrix[i] = new double[dimension];
+	}
+
+	for (int i = 0; i < dimension; i++)
+	{
+		for (int j = 0; j < dimension; j++)
+		{
+			matrix[i][j] = _s_matrix.get_value(i, j);
+		}
+	}
+
+	return *this;
+}
+
+
 SquareMatrix& SquareMatrix::operator + (const SquareMatrix& _s_matrix)
 {
 	SquareMatrix *s_matrix = new SquareMatrix(*this);
