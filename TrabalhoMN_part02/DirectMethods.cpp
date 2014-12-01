@@ -1,7 +1,62 @@
 #include "DirectMethods.h"
 #include <iostream>
 #include <cmath>
+
+#define MATRIX_MODE int
+#define FROM_1_TO_N 0
+#define FROM_0_TO_BN 1
+
 using namespace std;
+
+void printLU(SquareMatrix *LU, MATRIX_MODE mode) {
+    int dimension;
+
+    if (mode == FROM_1_TO_N)
+        dimension = LU->get_dimension() - 1;
+    else
+        dimension = LU->get_dimension();
+
+    // Imprimindo Matriz L
+    std::cout << "Matriz L:" << std::endl;
+    for (int i = 0; i < dimension; i++) {
+        std::cout << "[\t";
+        for (int j = 0; j < dimension; j++) {
+            double value;
+            if (j < i) {
+                if (mode == FROM_1_TO_N)
+                    value = LU->get_value(i + 1, j + 1);
+                else
+                    value = LU->get_value(i, j);
+            }
+            else if (i == j)
+                value = 1;
+            else
+                value = 0;
+
+            std::cout << value << "\t";
+        }
+        std::cout << "]" << std::endl;
+    }
+
+    // Imprimindo Matriz U
+    std::cout << "Matriz U:" << std::endl;
+    for (int i = 0; i < dimension; i++) {
+        std::cout << "[\t";
+        for (int j = 0; j < dimension; j++) {
+            double value;
+            if (j >= i)
+                if (mode == FROM_1_TO_N)
+                    value = LU->get_value(i + 1, j + 1);
+                else
+                    value = LU->get_value(i, j);
+            else
+                value = 0;
+
+            std::cout << value << "\t";
+        }
+        std::cout << "]" << std::endl;
+    }
+}
 
 int escolhe_pivo(SquareMatrix *A, int k, double *pv){
     int r;
@@ -107,6 +162,7 @@ VectorN *FatoracaoLU(int n, SquareMatrix *A, VectorN *b){
         r= p->get_value(i);
         blin->set_value(b->get_value(r),i);
     }
+    printLU(A, FROM_1_TO_N);
     // Ly=b
     y = subst_sucessivas_mod(n,A,blin);
     // Ux = y
@@ -191,6 +247,8 @@ VectorN *doolittleLU(SquareMatrix& A, VectorN& b)
     SquareMatrix *LU = getDoolittleLUMatrix(A);
     VectorN *x;
     VectorN *y;
+
+    printLU(LU, FROM_0_TO_BN);
     
     // Separando matriz LU
     SquareMatrix *L = new SquareMatrix(LU->get_dimension());
