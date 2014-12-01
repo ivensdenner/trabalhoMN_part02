@@ -1,11 +1,3 @@
-//
-//  VectorN.cpp
-//  TrabalhoMN_part02
-//
-//  Created by Ivens Denner on 30/11/14.
-//  Copyright (c) 2014 Ivens Denner. All rights reserved.
-//
-
 #include "VectorN.h"
 
 

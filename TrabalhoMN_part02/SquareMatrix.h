@@ -1,10 +1,3 @@
-//
-//  SquareMatrix.h
-//  TrabalhoMN_part02
-//
-//  Created by Ivens Denner on 30/11/14.
-//  Copyright (c) 2014 Ivens Denner. All rights reserved.
-//
 #ifndef SQUARE_MATRIX_H
 #define SQUARE_MATRIX_H
 

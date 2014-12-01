@@ -1,11 +1,3 @@
-//
-//  DirectMethods.c
-//  TrabalhoMN_part02
-//
-//  Created by Ivens Denner on 30/11/14.
-//  Copyright (c) 2014 Ivens Denner. All rights reserved.
-//
-
 #include "DirectMethods.h"
 #include <iostream>
 #include <cmath>
@@ -157,20 +149,6 @@ SquareMatrix* getDoolittleLUMatrix(SquareMatrix& A)
 
 VectorN *forwardSubstitution(SquareMatrix& A, VectorN& b)
 {
-//    int dimension = A.get_dimension();
-//    VectorN *x = new VectorN(dimension);
-//    double alpha = 0;
-//    
-//    for (int i = 0; i < dimension; i++)
-//    {
-//        alpha = b.get_value(i);
-//        for (int j = 0; j < i; j++)
-//            alpha -= (A.get_value(i, j) * x->get_value(j));
-//        
-//        x->set_value(alpha / A.get_value(i, i), i);
-//    }
-//    
-//    return x;
     int dimension = A.get_dimension();
     double soma;
     VectorN *x;
@@ -188,22 +166,7 @@ VectorN *forwardSubstitution(SquareMatrix& A, VectorN& b)
 }
 
 VectorN *backwardSubstitution(SquareMatrix& A, VectorN& b)
-{
-//    int dimension = A.get_dimension();
-//    VectorN *x = new VectorN(dimension);
-//    double alpha = 0;
-//    
-//    for (int i = 0; i < dimension; i++)
-//    {
-//        alpha = b.get_value(i);
-//        for (int j = (i + 1); j < dimension; j++)
-//            alpha -= (A.get_value(i, j) * x->get_value(j));
-//        
-//        x->set_value(alpha / A.get_value(i, i), i);
-//    }
-//    
-//    return x;
-    
+{    
     int dimension = A.get_dimension();
     double soma;
     VectorN *x;

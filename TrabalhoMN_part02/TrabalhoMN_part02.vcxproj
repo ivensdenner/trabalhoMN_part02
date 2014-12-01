@@ -70,7 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DirectMethods.cpp" />
-    <ClCompile Include="mainTest.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="SquareMatrix.cpp" />
     <ClCompile Include="VectorN.cpp" />
   </ItemGroup>
