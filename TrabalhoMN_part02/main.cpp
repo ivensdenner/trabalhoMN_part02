@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <ctime>
 #include "SquareMatrix.h"
 #include "VectorN.h"
 #include "DirectMethods.h"
@@ -71,12 +72,22 @@ int main(int argc, char **argv) {
 
 
 		/// Executando fatoracao LU com pivotacao
+		clock_t start_time;
+		start_time = clock();
+
 		std::cout << "Calculando valores de c pela fatoracao LU com pivotacao..." << std::endl;
 		VectorN *c1 = FatoracaoLU(n, A1, b1);
+		double time_in_seconds1 = (clock() - start_time) / (double)CLOCKS_PER_SEC;
+		std::cout << "Tempo de execucao: " << time_in_seconds1 << " segundos." << std::endl;
+		std::cout << std::endl;
 
 		/// Executando doolittle sem pivotacao
+		start_time = clock();
 		std::cout << "Calculando valores de c pela reducao de doolittle sem pivotacao..." << std::endl;
 		VectorN *c2 = doolittleLU(*A2, *b2);
+		double time_in_seconds2 = (clock() - start_time) / (double)CLOCKS_PER_SEC;
+		std::cout << "Tempo de execucao: " << time_in_seconds2 << " segundos." << std::endl;
+		std::cout << std::endl;
 
 
 		/// Gravando resultados
@@ -91,7 +102,10 @@ int main(int argc, char **argv) {
 			std::cout << c1->get_value(i + 1) << "\t";
 		}
 		out_file << "]" << std::endl;
+		out_file << "Tempo de execucao: " << time_in_seconds1 << " segundos." << std::endl;
+		out_file << std::endl;
 		std::cout << "]" << std::endl;
+		std::cout << std::endl;
 
 		out_file << "Valor de c pela reducao doolittle sem pivotacao:" << std::endl;
 		std::cout << "Valor de c pela reducao doolittle sem pivotacao:" << std::endl;
@@ -102,7 +116,10 @@ int main(int argc, char **argv) {
 			std::cout << c2->get_value(i) << "\t";
 		}
 		out_file << "]" << std::endl;
+		out_file << "Tempo de execucao: " << time_in_seconds2 << " segundos." << std::endl;
+		out_file << std::endl;
 		std::cout << "]" << std::endl;
+		std::cout << std::endl;
 		out_file.close();
 
 		std::cout << "Terminado!" << std::endl;
