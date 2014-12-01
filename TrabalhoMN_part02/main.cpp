@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
 
 		/// Ler arquivo para povoar n, A e b
 		in_file.open(argv[1]);
-		if (in_file.is_open()) {
+		if (!in_file.is_open()) {
 			std::cout << "Erro! Arquivo de entrada nao encontrado! Para executar este programa use:" << std::endl;
 			std::cout << "$ ./<nome-do-programa> <nome-do-arquivo-de-entrada>" << std::endl;
 			std::cout << "Saindo..." << std::endl;
