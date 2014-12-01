@@ -15,14 +15,23 @@ int main(int argc, char **argv) {
 	std::ofstream out_file;
 
 	if (argc < 2) {
-		std::cout << "Erro! Arquivo de entrada nao especificado! Para executar esse programa use:" << std::endl;
+		std::cout << "Erro! Arquivo de entrada nao especificado! Para executar este programa use:" << std::endl;
 		std::cout << "$ ./<nome-do-programa> <nome-do-arquivo-de-entrada>" << std::endl;
 		std::cout << "Saindo..." << std::endl;
+
+		return -1;
 	}
 	else {
 
 		/// Ler arquivo para povoar n, A e b
 		in_file.open(argv[1]);
+		if (in_file.is_open()) {
+			std::cout << "Erro! Arquivo de entrada nao encontrado! Para executar este programa use:" << std::endl;
+			std::cout << "$ ./<nome-do-programa> <nome-do-arquivo-de-entrada>" << std::endl;
+			std::cout << "Saindo..." << std::endl;
+
+			return -1;
+		}
 
 		std::cout << "Lendo arquivo " << argv[1] << "..." << std::endl;
 		// Lendo n (dimensão da matriz)
